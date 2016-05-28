@@ -1,15 +1,16 @@
 var stage = document.querySelector('#stage');
 
-var enjoyLyric = function(verse, lyric, cb) {
-    var i = 0;
+var enjoyLyric = function(verse, lyric, cb, i) {
+    if (lyric.length == i) {
+        cb();
+        return;
+    }
+
     var interval = Math.random() * 1000;
-    var timer = setInterval(function() {
-        var char = lyric[i++];
+    var timer = setTimeout(function() {
+        var char = lyric[i];
         verse.textContent = verse.textContent + char;
-        if (lyric.length <= i) {
-            clearInterval(timer);
-            cb();
-        }
+        enjoyLyric(verse, lyric, cb, i+1);
     }, interval);
 }
 
@@ -26,7 +27,7 @@ var enjoyLyrics = function(lyrics) {
             if (done == lyrics.length) {
                 enjoyLyrics(lyrics);
             }
-        });
+        }, 0);
     }
 };
 
