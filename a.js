@@ -22,7 +22,7 @@ var appendTweetButton = function(verse) {
     var lyric = verse.textContent;
 
     window.twttr.widgets.createShareButton(
-        'http://tamabi.github.io/',
+        'https://tamabi.github.io/',
         tweetContainer,
         {
             text: lyric,
@@ -32,7 +32,7 @@ var appendTweetButton = function(verse) {
 };
 
 var enjoyLyrics = function(lyrics) {
-    var verse = document.createElement('div');
+    var verse = document.createElement('h3');
     verse.className = 'verse';
     stage.appendChild(verse);
     var done = 0;
