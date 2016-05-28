@@ -31,10 +31,17 @@ var appendTweetButton = function(verse) {
     );
 };
 
+var enjoyTime = 0;
 var enjoyLyrics = function(lyrics) {
-    var verse = document.createElement('h3');
+    var verseContainer = document.createElement('h3');
+    verseContainer.className = 'verse-container';
+
+    var verse = document.createElement('span');
     verse.className = 'verse';
-    stage.appendChild(verse);
+    var singer = document.querySelector(enjoyTime++ % 2 ? '.shikakun' : '.hitode909');
+    verseContainer.appendChild(singer.cloneNode());
+    verseContainer.appendChild(verse);
+    stage.appendChild(verseContainer);
     var done = 0;
     var i = 0;
     for (i = 0; i < lyrics.length; i++) {
@@ -42,7 +49,7 @@ var enjoyLyrics = function(lyrics) {
         enjoyLyric(verse, lyric, function() {
             done++;
             if (done == lyrics.length) {
-                appendTweetButton(verse);
+                appendTweetButton(verseContainer);
                 enjoyLyrics(lyrics);
             }
         }, 0);
