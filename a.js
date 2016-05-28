@@ -69,18 +69,21 @@ var preludes = [
     ['新発売'],
     ['相成りました'],
     ['めでたい'],
-    [
-        '多摩川ビール',
-        'Tシャツ新発売'
-    ]
+    ['多摩川ビール'],
+    ['Tシャツ新発売']
 ];
+var select = function(a) {
+    return a[Math.floor(a.length * Math.random())];
+}
+var preludes2 = [];
+var i = 0;
 
 var shout = function() {
-    var lyrics = preludes.shift();
-    if (preludes.length > 0) {
+    var lyrics = preludes[i++];
+    if (lyrics) {
         enjoyLyrics(lyrics, shout);
     } else {
-        enjoyLyrics(lyrics);
+        enjoyLyrics([select(preludes)[0], select(preludes)[0]], shout);
     }
 };
 shout();
