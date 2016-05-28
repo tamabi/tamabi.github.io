@@ -14,6 +14,23 @@ var enjoyLyric = function(verse, lyric, cb, i) {
     }, interval);
 }
 
+var appendTweetButton = function(verse) {
+    var tweetContainer = document.createElement('span');
+    tweetContainer.setAttribute('class', 'tweet-button-container');
+    verse.appendChild(tweetContainer);
+
+    var lyric = verse.textContent;
+
+    window.twttr.widgets.createShareButton(
+        'http://tamabi.github.io/',
+        tweetContainer,
+        {
+            text: lyric,
+            hashtags: '多摩ビ'
+        }
+    );
+};
+
 var enjoyLyrics = function(lyrics) {
     var verse = document.createElement('div');
     verse.className = 'verse';
@@ -25,6 +42,7 @@ var enjoyLyrics = function(lyrics) {
         enjoyLyric(verse, lyric, function() {
             done++;
             if (done == lyrics.length) {
+                appendTweetButton(verse);
                 enjoyLyrics(lyrics);
             }
         }, 0);
