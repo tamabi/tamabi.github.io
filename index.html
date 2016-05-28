@@ -9,6 +9,40 @@
         top: 50%;
         left: 50%;
         margin: -160px 0 0 -160px;
+        -webkit-animation-name: tamabeat;
+        animation-name: tamabeat;
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+      }
+      @-webkit-keyframes tamabeat {
+        0%,
+        100% {
+          -webkit-transition-timing-function: $transition-timing-function;
+          transition-timing-function: $transition-timing-function;
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+        33% {
+          -webkit-transform: scale(3);
+          transform: scale(3);
+        }
+      }
+      @keyframes tamabeat {
+        0%,
+        100% {
+          -webkit-transition-timing-function: $transition-timing-function;
+          transition-timing-function: $transition-timing-function;
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+        33% {
+          -webkit-transform: scale(3);
+          transform: scale(3);
+        }
       }
     </style>
   </head>
