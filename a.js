@@ -29,11 +29,12 @@ var appendTweetButton = function(verse) {
             hashtags: '多摩ビ'
         }
     );
+    verse.appendChild(document.createElement('br'));
 };
 
 var enjoyTime = 0;
 var enjoyLyrics = function(lyrics, cb) {
-    var verseContainer = document.createElement('h3');
+    var verseContainer = document.createElement('h2');
     verseContainer.className = 'verse-container';
 
     var verse = document.createElement('span');
