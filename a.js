@@ -32,13 +32,13 @@ var appendTweetButton = function(verse) {
 };
 
 var enjoyTime = 0;
-var enjoyLyrics = function(lyrics) {
+var enjoyLyrics = function(lyrics, cb) {
     var verseContainer = document.createElement('h3');
     verseContainer.className = 'verse-container';
 
     var verse = document.createElement('span');
     verse.className = 'verse';
-    var singer = document.querySelector(enjoyTime++ % 2 ? '.shikakun' : '.hitode909');
+    var singer = document.querySelector(enjoyTime++ % 2 ? '.hitode909' : '.shikakun');
     verseContainer.appendChild(singer.cloneNode());
     verseContainer.appendChild(verse);
     stage.appendChild(verseContainer);
@@ -50,18 +50,40 @@ var enjoyLyrics = function(lyrics) {
             done++;
             if (done == lyrics.length) {
                 appendTweetButton(verseContainer);
-                enjoyLyrics(lyrics);
+                if (cb) {
+                    cb();
+                } else {
+                    enjoyLyrics(lyrics);
+                }
             }
         }, 0);
     }
 };
 
 var lyrics = [
-    '多摩川ビール'.split(''),
-    'Tシャツ新発売'.split('')
 ];
 
-enjoyLyrics(lyrics);
+var preludes = [
+    ['このたび'],
+    ['多摩ビTシャツ'],
+    ['新発売'],
+    ['相成りました'],
+    ['めでたい'],
+    [
+        '多摩川ビール',
+        'Tシャツ新発売'
+    ]
+];
+
+var shout = function() {
+    var lyrics = preludes.shift();
+    if (preludes.length > 0) {
+        enjoyLyrics(lyrics, shout);
+    } else {
+        enjoyLyrics(lyrics);
+    }
+};
+shout();
 
 document.body.addEventListener('click', function() {
     var audios = document.querySelectorAll('audio');
