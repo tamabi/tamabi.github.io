@@ -55,3 +55,11 @@ var lyrics = [
 ];
 
 enjoyLyrics(lyrics);
+
+document.body.addEventListener('click', function() {
+    var audios = document.querySelectorAll('audio');
+    var i = 0;
+    for(i = 0; i < audios.length; i++) {
+        audios[i].play();
+    }
+}, false);
