@@ -89,6 +89,24 @@ var shout = function() {
 };
 shout();
 
+var switchShirts = function() {
+  var i = 0;
+  var items = document.querySelectorAll('.suzuri-widget-product');
+  setInterval(function() {
+    i++;
+    items.forEach(function(item, index) {
+      if (i%items.length == index) {
+        item.style.display = 'block';
+      } else {
+        item.style.display = 'none';
+      }
+    })
+  }, 1000);
+}
+document.addEventListener('DOMContentLoaded', function() {
+  switchShirts();
+})
+
 document.body.addEventListener('click', function() {
     var audios = document.querySelectorAll('audio');
     var i = 0;
